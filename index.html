@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Heating System</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
+    />
+    <style>
+      :root {
+        --primary-color: #ff6b6b;
+        --secondary-color: #4ecdc4;
+        --background-color: rgba(0, 0, 0, 0.7);
+        --text-color: #ffffff;
+      }
+
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        font-family: "Arial", sans-serif;
+      }
+
+      .wrapper {
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        height: 100%;
+        background-image: url("https://media.architecturaldigest.com/photos/64f71af50a84399fbdce2f6a/16:9/w_1920,c_limit/Living%20with%20Lolo%20Photo%20Credit_%20Life%20Created%204.jpg");
+      }
+
+      .navbar {
+        padding: 1em 0;
+        background-color: var(--background-color) !important;
+        transition: all 0.3s ease;
+      }
+
+      .navbar:hover {
+        background-color: rgba(0, 0, 0, 0.8) !important;
+      }
+
+      .card {
+        border-radius: 20px;
+        background-color: var(--background-color);
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        backdrop-filter: blur(4px);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        transition: all 0.3s ease;
+      }
+
+      .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.5);
+      }
+
+      .card-body {
+        color: var(--text-color);
+      }
+
+      .text-warning {
+        font-size: 2.5rem;
+        color: var(--primary-color) !important;
+      }
+
+      input[type="range"] {
+        -webkit-appearance: none;
+        width: 80%;
+        height: 15px;
+        border-radius: 5px;
+        background: #d3d3d3;
+        outline: none;
+        opacity: 0.7;
+        transition: opacity 0.2s;
+      }
+
+      input[type="range"]:hover {
+        opacity: 1;
+      }
+
+      input[type="range"]::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        background: var(--primary-color);
+        cursor: pointer;
+      }
+
+      input[type="range"]::-moz-range-thumb {
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        background: var(--primary-color);
+        cursor: pointer;
+      }
+
+      .btn {
+        transition: all 0.3s ease;
+      }
+
+      .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+
+      #temperature,
+      #humidity {
+        transition: all 0.3s ease;
+      }
+
+      @media (max-width: 768px) {
+        .card {
+          margin: 0 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <section class="vh-100 wrapper shadow">
+      <nav class="navbar navbar-light px-5">
+        <div class="d-flex align-items-center justify-content-center w-100">
+          <h4 class="text-white m-0">
+            <i class="fa-solid fa-fire-flame-simple mr-4 text-danger"></i>
+            Heating System
+          </h4>
+        </div>
+      </nav>
+      <div class="container py-5">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col-md-8 col-lg-6 col-xl-4">
+            <div class="card">
+              <div class="text-center pt-4">
+                <div class="text-white small">min: 10°C max: 100°C</div>
+                <input
+                  type="range"
+                  min="10"
+                  max="100"
+                  id="zeljena"
+                  oninput="document.getElementById('slider').textContent = this.value + '°C';"
+                />
+                <div id="slider" class="text-warning h4 mt-2"></div>
+                <div class="text-white h5">Desired Temperature</div>
+              </div>
+              <div class="card-body text-center">
+                <div class="py-1 text-white">Current Temperature</div>
+                <h6
+                  class="display-4 mb-0 font-weight-bold"
+                  id="temperature"
+                ></h6>
+                <div class="text-white py-3">Current Humidity</div>
+                <div class="pt-2">
+                  <i
+                    class="fas fa-tint fa-fw fa-2x"
+                    style="color: var(--secondary-color)"
+                  ></i>
+                  <span class="h3" id="humidity">84%</span>
+                </div>
+                <div class="pt-4">
+                  <div class="text-white mb-2">LED Control</div>
+                  <button id="ledOn" class="btn btn-success mx-2">
+                    LED ON
+                  </button>
+                  <button id="ledOff" class="btn btn-danger mx-2">
+                    LED OFF
+                  </button>
+                </div>
+
+                <div class="pt-4">
+                  <div class="text-white mb-2">LED Blink</div>
+                  <button id="ledBlink" class="btn btn-warning mx-2">
+                    LED Blink
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/toastify-js"
+    ></script>
+
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.2/firebase-app.js";
+      import {
+        getDatabase,
+        ref,
+        onValue,
+        set,
+      } from "https://www.gstatic.com/firebasejs/9.6.2/firebase-database.js";
+
+      const firebaseConfig = {
+        apiKey: "AIzaSyDcracM5v5KCJ4R1gV4CcbOjv8N0ZKxCt0",
+        authDomain: "iot-heating-system.firebaseapp.com",
+        databaseURL:
+          "https://iot-heating-system-default-rtdb.europe-west1.firebasedatabase.app",
+        projectId: "iot-heating-system",
+        storageBucket: "iot-heating-system.firebasestorage.app",
+        messagingSenderId: "1086625855837",
+        appId: "1:1086625855837:web:457ddbc71c610a2d1490b4",
+      };
+
+      const app = initializeApp(firebaseConfig);
+      const db = getDatabase(app);
+
+      const tempElement = document.getElementById("temperature");
+      const humidityElement = document.getElementById("humidity");
+      const zeljenaInput = document.getElementById("zeljena");
+
+      let currentTemp = 0;
+
+      const temp = ref(db, "temperature");
+      onValue(temp, (snapshot) => {
+        currentTemp = snapshot.val();
+        tempElement.innerHTML = currentTemp + "°C";
+      });
+
+      const humidity = ref(db, "humidity");
+      onValue(humidity, (snapshot) => {
+        const data = snapshot.val();
+        humidityElement.innerHTML = data + "%";
+      });
+
+      // LED ON and OFF buttons
+      const ledOnButton = document.getElementById("ledOn");
+      const ledOffButton = document.getElementById("ledOff");
+      const ledBlinkButton = document.getElementById("ledBlink");
+
+      ledBlinkButton.addEventListener("click", () => {
+        set(ref(db, "isOn"), true);
+        showToast("LED Blinking");
+      });
+
+      ledOnButton.addEventListener("click", () => {
+        set(ref(db, "isOn"), true);
+        showToast("LED Turned On");
+      });
+
+      ledOffButton.addEventListener("click", () => {
+        set(ref(db, "isOn"), false);
+        showToast("LED Turned Off");
+      });
+
+      const slider = document.getElementById("zeljena");
+
+      if (slider) {
+        slider.addEventListener("input", (event) => {
+          const wantedTemp = parseInt(event.target.value, 10);
+          set(ref(db, "wantedTemp"), wantedTemp);
+          console.log("Updated wantedTemp: ", wantedTemp);
+        });
+      } else {
+        console.error("Element sa ID-jem 'zeljena' ne postoji!");
+      }
+
+      function showToast(message) {
+        Toastify({
+          text: message,
+          duration: 3000,
+          close: true,
+          gravity: "top",
+          position: "right",
+          backgroundColor: "linear-gradient(to right, #00b09b, #96c93d)",
+        }).showToast();
+      }
+
+      // Initialize slider value
+      document.getElementById("slider").textContent = slider.value + "°C";
+    </script>
+  </body>
+</html>
