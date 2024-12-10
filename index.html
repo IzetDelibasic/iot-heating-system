@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico" />
     <title>Heating System</title>
     <link
       rel="stylesheet"
@@ -170,7 +171,7 @@
                   ></i>
                   <span class="h3" id="humidity">84%</span>
                 </div>
-                <div class="pt-4">
+                <!-- <div class="pt-4">
                   <div class="text-white mb-2">LED Control</div>
                   <button id="ledOn" class="btn btn-success mx-2">
                     LED ON
@@ -185,7 +186,7 @@
                   <button id="ledBlink" class="btn btn-warning mx-2">
                     LED Blink
                   </button>
-                </div>
+                </div> -->
               </div>
             </div>
           </div>
@@ -240,24 +241,24 @@
       });
 
       // LED ON and OFF buttons
-      const ledOnButton = document.getElementById("ledOn");
-      const ledOffButton = document.getElementById("ledOff");
-      const ledBlinkButton = document.getElementById("ledBlink");
+      //const ledOnButton = document.getElementById("ledOn");
+      //const ledOffButton = document.getElementById("ledOff");
+      //const ledBlinkButton = document.getElementById("ledBlink");
 
-      ledBlinkButton.addEventListener("click", () => {
-        set(ref(db, "isOn"), true);
-        showToast("LED Blinking");
-      });
+      // ledBlinkButton.addEventListener("click", () => {
+      //   set(ref(db, "isOn"), true);
+      //   showToast("LED Blinking");
+      // });
 
-      ledOnButton.addEventListener("click", () => {
-        set(ref(db, "isOn"), true);
-        showToast("LED Turned On");
-      });
+      // ledOnButton.addEventListener("click", () => {
+      //   set(ref(db, "isOn"), true);
+      //   showToast("LED Turned On");
+      // });
 
-      ledOffButton.addEventListener("click", () => {
-        set(ref(db, "isOn"), false);
-        showToast("LED Turned Off");
-      });
+      // ledOffButton.addEventListener("click", () => {
+      //   set(ref(db, "isOn"), false);
+      //   showToast("LED Turned Off");
+      // });
 
       const slider = document.getElementById("zeljena");
 
